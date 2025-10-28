@@ -222,7 +222,6 @@ class _HomePageState extends State<HomePage> {
       itemCount: movies.length + (isLoadingMore ? 1 : 0),
       separatorBuilder: (context, index) => const Divider(thickness: 1.5),
       itemBuilder: (context, index) {
-        // bottom loader
         if (index == movies.length) {
           return const Padding(
             padding: EdgeInsets.symmetric(vertical: 16),

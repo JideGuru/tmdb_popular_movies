@@ -18,7 +18,6 @@ class SearchMoviesCubit extends Cubit<SearchMoviesState> {
     }
 
     try {
-      // Handle pagination if already loaded
       if (state is SearchMoviesLoadedState && loadMore) {
         final currentState = state as SearchMoviesLoadedState;
 
@@ -48,13 +47,9 @@ class SearchMoviesCubit extends Cubit<SearchMoviesState> {
         return;
       }
 
-      // Initial search
       emit(SearchMoviesLoadingState());
 
-      final moviesData = await _repository.searchMovies(
-        query: query,
-        page: 1,
-      );
+      final moviesData = await _repository.searchMovies(query: query, page: 1);
       final movies = moviesData.movies ?? [];
 
       if (movies.isEmpty) {

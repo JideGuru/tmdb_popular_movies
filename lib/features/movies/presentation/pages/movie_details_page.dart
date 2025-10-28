@@ -80,12 +80,11 @@ class _ScoreBadge extends StatelessWidget {
         return Opacity(
           opacity: value,
           child: Transform.translate(
-            offset: Offset(0, 10 * (1 - value)), // slight upward slide
+            offset: Offset(0, 10 * (1 - value)),
             child: child,
           ),
         );
       },
-      // child = the static part (built once)
       child: Container(
         height: 60,
         width: 60,

@@ -4,10 +4,7 @@ import 'package:tmdb_popular_movies/features/features.dart';
 class MovieListTile extends StatelessWidget {
   final MovieSummary movie;
 
-  const MovieListTile({
-    super.key,
-    required this.movie,
-  });
+  const MovieListTile({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {

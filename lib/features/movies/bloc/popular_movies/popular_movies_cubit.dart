@@ -10,7 +10,6 @@ class PopularMoviesCubit extends Cubit<PopularMoviesState> {
 
   Future<void> fetchPopularMovies({bool loadMore = false}) async {
     try {
-      // Handle pagination if already loaded
       if (state is PopularMoviesLoadedState && loadMore) {
         final currentState = state as PopularMoviesLoadedState;
         if (!currentState.hasMore || currentState.isLoadingMore) return;
@@ -33,7 +32,6 @@ class PopularMoviesCubit extends Cubit<PopularMoviesState> {
         return;
       }
 
-      // Initial fetch
       emit(PopularMoviesLoadingState());
 
       final moviesData = await _repository.getPopularMovies(page: 1);
