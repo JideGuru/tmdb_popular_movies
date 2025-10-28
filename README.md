@@ -4,7 +4,7 @@ A Flutter application that displays popular movies from The Movie Database (TMDB
 
 ## Preview
 
-<video src="preview/tmdb-1-comp.mp4" controls></video>
+[preview/tmdb-1-comp.mp4](preview/tmdb-1-comp.mp4)
 
 ## Features
 
