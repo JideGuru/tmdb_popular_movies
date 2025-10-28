@@ -19,6 +19,11 @@ class PopularMoviesCubit extends Cubit<PopularMoviesState> {
         final moviesData = await _repository.getPopularMovies(
           page: currentState.currentPage + 1,
         );
+
+        if (moviesData.error != null) {
+          return;
+        }
+
         final newMovies = moviesData.movies ?? [];
 
         emit(
@@ -35,6 +40,13 @@ class PopularMoviesCubit extends Cubit<PopularMoviesState> {
       emit(PopularMoviesLoadingState());
 
       final moviesData = await _repository.getPopularMovies(page: 1);
+
+      if (moviesData.error != null) {
+        emit(PopularMoviesErrorState(moviesData.error!.message));
+
+        return;
+      }
+
       final movies = moviesData.movies ?? [];
 
       emit(

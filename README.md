@@ -2,6 +2,10 @@
 
 A Flutter application that displays popular movies from The Movie Database (TMDB) API.
 
+## Preview
+
+<video src="preview/tmdb-1-comp.mp4" controls></video>
+
 ## Features
 
 - Browse popular movies

@@ -99,6 +99,7 @@ class _HomePageState extends State<HomePage> {
                     _performSearch(value);
                   }
                 },
+                enableSuggestions: false,
               )
             : const Text('Movie viewer'),
         centerTitle: false,
@@ -130,7 +131,7 @@ class _HomePageState extends State<HomePage> {
         }
 
         if (state is PopularMoviesErrorState) {
-          return Center(child: Text('Error: ${state.message}'));
+          return Center(child: _ErrorWidget());
         }
 
         if (state is PopularMoviesLoadedState) {
@@ -176,16 +177,7 @@ class _HomePageState extends State<HomePage> {
         }
 
         if (state is SearchMoviesErrorState) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Icon(Icons.error_outline, size: 48, color: Colors.red),
-                const SizedBox(height: 16),
-                Text('Error: ${state.message}'),
-              ],
-            ),
-          );
+          return Center(child: _ErrorWidget());
         }
 
         if (state is SearchMoviesEmptyState) {
@@ -232,6 +224,22 @@ class _HomePageState extends State<HomePage> {
         final movie = movies[index];
         return MovieListTile(movie: movie);
       },
+    );
+  }
+}
+
+class _ErrorWidget extends StatelessWidget {
+  const _ErrorWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Icon(Icons.error_outline, size: 48, color: Colors.red),
+        const SizedBox(height: 16),
+        Text('Something went wrong'),
+      ],
     );
   }
 }

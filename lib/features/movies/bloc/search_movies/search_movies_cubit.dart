@@ -34,6 +34,11 @@ class SearchMoviesCubit extends Cubit<SearchMoviesState> {
           query: query,
           page: currentState.currentPage + 1,
         );
+
+        if (moviesData.error != null) {
+          return;
+        }
+
         final newMovies = moviesData.movies ?? [];
 
         emit(
@@ -51,6 +56,12 @@ class SearchMoviesCubit extends Cubit<SearchMoviesState> {
 
       final moviesData = await _repository.searchMovies(query: query, page: 1);
       final movies = moviesData.movies ?? [];
+
+      if (moviesData.error != null) {
+        emit(SearchMoviesErrorState(moviesData.error!.message));
+
+        return;
+      }
 
       if (movies.isEmpty) {
         emit(SearchMoviesEmptyState(query));

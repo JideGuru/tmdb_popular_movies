@@ -11,12 +11,6 @@ class AppDio with DioMixin implements Dio {
             defaultValue: '',
           );
 
-          if (apiKey.isEmpty) {
-            throw Exception(
-              'TMDB_API_KEY not found. Please run with --dart-define=TMDB_API_KEY=your_api_key',
-            );
-          }
-
           options.queryParameters['api_key'] = apiKey;
           return handler.next(options);
         },

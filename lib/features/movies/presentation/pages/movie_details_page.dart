@@ -74,7 +74,7 @@ class _ScoreBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return TweenAnimationBuilder<double>(
       tween: Tween(begin: 0.0, end: 1.0),
-      duration: const Duration(milliseconds: 1500),
+      duration: const Duration(milliseconds: 1000),
       curve: Curves.easeOut,
       builder: (context, value, child) {
         return Opacity(
